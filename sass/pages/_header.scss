@@ -1,0 +1,161 @@
+@use "../abstract/mixins" as *;
+@use "../reuse/logo";
+@use "../reuse/burger-button";
+
+.header {
+	@include flexbox(space-between, center);
+	@include transition(400ms);
+
+	width: 100%;
+	height: 7vh;
+	padding: 0 20px;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+
+	@media screen and (min-width: 1366px) {
+		height: 8vh;
+		padding: 15px 30px;
+	}
+
+	&--scrolled {
+		background-color: var(--primary);
+		box-shadow: var(--box-shadow);
+	}
+
+	.logo {
+		width: 40%;
+
+		@media screen and (min-width: 768px) {
+			width: 25%;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 13%;
+		}
+	}
+
+	.burger-button {
+		&--click {
+			.burger-button__stripe:nth-child(1) {
+				transform: rotate(45deg) translate(7px, 7px);
+			}
+			.burger-button__stripe:nth-child(2) {
+				opacity: 0;
+			}
+			.burger-button__stripe:nth-child(3) {
+				transform: rotate(-45deg) translate(7px, -7px);
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__nav-link {
+		@include transition(400ms);
+		transition-delay: 150ms;
+
+		width: 50vw;
+		padding-top: 13px;
+		position: fixed;
+		top: 6vh;
+		right: 3.5vw;
+		display: none;
+		opacity: 0;
+
+		&--trigger {
+			display: block;
+		}
+
+		&--opacity {
+			opacity: 1;
+			transform: translateY(15px);
+		}
+
+		@media screen and (min-width: 768px) {
+			width: 60%;
+			padding: 0;
+			position: static;
+			display: block;
+			opacity: 1;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 35%;
+		}
+	}
+
+	&__arrow {
+		@include transition(400ms);
+
+		width: 30px;
+		height: 15px;
+		position: absolute;
+		top: 0;
+		right: 8px;
+		display: block;
+		background-color: white;
+		clip-path: polygon(0 100%, 50% 0, 100% 100%);
+
+		&--scrolled {
+			background-color: var(--primary);
+		}
+
+		@media screen and (min-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__link-list {
+		@include transition(400ms);
+
+		width: 100%;
+		padding: 8px 0;
+		background-color: white;
+		border-radius: 4px;
+		box-shadow: var(--box-shadow);
+
+		&--scrolled {
+			background-color: var(--primary);
+		}
+
+		@media screen and (min-width: 768px) {
+			@include flexbox(space-between, center, row);
+			background-color: transparent;
+			box-shadow: none;
+		}
+	}
+
+	&__link {
+		@include normal();
+		@include transition(400ms);
+
+		display: block;
+		font-size: 0.9rem;
+		text-align: center;
+		text-decoration: none;
+		color: var(--text);
+
+		&--scrolled {
+			color: white;
+		}
+
+		@media screen and (min-width: 768px) {
+			color: darken(white, $amount: 5);
+
+			&--disable {
+				color: darken(white, $amount: 15);
+			}
+
+			&--scrolled--disable {
+				color: darken(white, $amount: 25);
+			}
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.8rem;
+		}
+	}
+}

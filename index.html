@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>uBook</title>
+   <link rel="stylesheet" href="./css/style.css">
+   <script src="https://kit.fontawesome.com/994c85c9fb.js" crossorigin="anonymous"></script>
+   <script src="./js/event.js" defer></script>
+   <script src="./js/form.js" defer></script>
+   <script src="./js/manage-data.js" defer></script>
+</head>
+
+<body class="page">
+   <header class="header page__header">
+      <div class="logo">
+         <img src="./asset/logo-white.svg" alt="" class="logo__svg">
+      </div>
+
+      <button class="burger-button">
+         <span class="burger-button__stripe"></span>
+         <span class="burger-button__stripe"></span>
+         <span class="burger-button__stripe"></span>
+      </button>
+
+      <nav class="header__nav-link">
+         <span class="header__arrow"></span>
+         <ul class="header__link-list">
+            <li class="header__list-item">
+               <a href="#add" class="header__link">Tambahkan buku</a>
+            </li>
+            <li class="header__list-item">
+               <a href="#favorite" class="header__link">Favorit</a>
+            </li>
+            <li class="header__list-item">
+               <a href="#bookshelf" class="header__link">Rak buku</a>
+            </li>
+         </ul>
+      </nav>
+   </header>
+
+   <main class="container">
+      <section class="register-form" id="add">
+         <div class="register-form-box" data-speed="0.4">
+            <div class="register-form-box__col-1">
+               <h2 class="register-form-box__title">Informasi buku.</h2>
+               <div class="register-form-box__container-image">
+                  <img src="./asset/register-image.svg" alt="" class="register-form-box__image">
+               </div>
+            </div>
+            <form class="register-form-box__col-2">
+               <label class="register-form-box__input-wrapper">
+                  <p class="register-form-box__input-title">Judul</p>
+                  <input type="text" maxlength="40" class="register-form-box__input" id="title" required>
+                  <div class="register-form-box__warning-area">
+                     <p class="register-form-box__warning-text" id="title-warning"></p>
+                  </div>
+               </label>
+               <label class="register-form-box__input-wrapper">
+                  <p class="register-form-box__input-title">Pengarang</p>
+                  <input type="text" maxlength="30" class="register-form-box__input" id="author">
+                  <div class="register-form-box__warning-area">
+                     <p class="register-form-box__warning-text" id="author-warning"></p>
+                  </div>
+               </label>
+               <label class="register-form-box__input-wrapper">
+                  <p class="register-form-box__input-title">Penerbit</p>
+                  <input type="text" maxlength="30" class="register-form-box__input" id="publisher">
+                  <div class="register-form-box__warning-area">
+                     <p class="register-form-box__warning-text" id="publisher-warning"></p>
+                  </div>
+               </label>
+               <label class="register-form-box__input-wrapper">
+                  <p class="register-form-box__input-title">Tanggal rilis</p>
+                  <input type="date" class="register-form-box__input" max="2030-1-1" id="date">
+               </label>
+               <div class="register-form-box__checkbox-area">
+                  <label class="register-form-box__input-checkbox-wrapper">
+                     <p class="register-form-box__input-checkbox-title">Telah dibaca</p>
+                     <i class="fa-regular fa-square register-form-box__checkbox-icon">
+                        <input type="checkbox" class="register-form-box__input-checkbox" id="readed-check">
+                     </i>
+                  </label>
+                  <label class="register-form-box__input-checkbox-wrapper">
+                     <p
+                        class="register-form-box__input-checkbox-title register-form-box__input-checkbox-title--disable">
+                        Favorit</p>
+                     <i
+                        class="fa-regular fa-square register-form-box__checkbox-icon register-form-box__checkbox-icon--disable">
+                        <input type="checkbox" class="register-form-box__input-checkbox" id="favorite-check">
+                     </i>
+                  </label>
+               </div>
+               <div class="register-form-box__button-wrapper">
+                  <button type="reset" class="register-form-box__button register-form-box__button--secondary"
+                     id="button-reset">Reset</button>
+                  <button type="submit"
+                     class="register-form-box__button register-form-box__button--primary register-form-box__button--primary--disable"
+                     id="button-submit" disabled>Submit</button>
+               </div>
+            </form>
+         </div>
+      </section>
+
+      <div class="content-container">
+         <section class="favorite-container" id="favorite">
+            <div class="favorite-container__header">
+               <h2 class="favorite-container__heading">Favorit</h2>
+               <i class="fa-solid fa-right-long favorite-container__arrow-icon"></i>
+            </div>
+            <ul class="favorite-container__card-container">
+            </ul>
+            <section class="favorite-container__footer">
+               <p class="favorite-container__maks-book-alert"><span class="number-favorite">10</span> buku lagi</p>
+            </section>
+         </section>
+
+         <section class="unread-container" id="bookshelf">
+            <div class="unread-container__header">
+               <h2 class="unread-container__heading">Belum dibaca</h2>
+               <div class="unread-container__search-bar unread-container__search-bar--accent">
+                  <i class="fa-solid fa-magnifying-glass unread-container__search-icon"></i>
+                  <input type="text" maxlength="40" placeholder="cari judul..." class="unread-container__search-input"
+                     id="search-unread">
+               </div>
+            </div>
+            <ul class="unread-container__bookshelf-container">
+            </ul>
+            <div class="unread-container__footer">
+               <p class="unread-container__note">Terdapat <span class="number-unread">0</span> Item</p>
+            </div>
+         </section>
+
+         <section class="readed-container">
+            <div class="readed-container__header">
+               <h2 class="readed-container__heading">Sudah dibaca</h2>
+               <div class="readed-container__search-bar readed-container__search-bar--accent">
+                  <i class="fa-solid fa-magnifying-glass readed-container__search-icon"></i>
+                  <input type="text" maxlength="40" placeholder="cari judul..." class="readed-container__search-input"
+                     id="search-readed">
+               </div>
+            </div>
+            <ul class="readed-container__bookshelf-container">
+            </ul>
+            <div class="readed-container__footer">
+               <p class="readed-container__note">Terdapat <span class="number-readed">0</span> Item</p>
+            </div>
+         </section>
+      </div>
+   </main>
+
+   <footer class="footer">
+      <div class="footer__wrap-1">
+         <div class="footer__banner">
+            <img src="./asset/logo-white.svg" alt="" class="footer__logo">
+         </div>
+         <nav class="footer__nav-link">
+            <ul class="footer__link-list">
+               <li class="footer__list-item">
+                  <a href="#add" class="footer__link">Tambahkan buku</a>
+               </li>
+               <li class="footer__list-item">
+                  <a href="#favorite" class="footer__link">Favorit</a>
+               </li>
+               <li class="footer__list-item">
+                  <a href="#bookshelf" class="footer__link">Rak buku</a>
+               </li>
+            </ul>
+         </nav>
+      </div>
+
+      <div class="footer__wrap-2">
+         <p class="footer__ending-text">thanks for visit</p>
+      </div>
+   </footer>
+
+   <div class="popup-bg">
+      <div class="popup-edit">
+         <div class="popup-edit__wrapper-form">
+            <label class="popup-edit__input-wrapper">
+               <p class="popup-edit__input-title">Judul</p>
+               <input type="text" maxlength="40" class="popup-edit__input" id="title" required>
+               <div class="popup-edit__warning-area">
+                  <p class="popup-edit__warning-text" id="title-warning"></p>
+               </div>
+            </label>
+            <label class="popup-edit__input-wrapper">
+               <p class="popup-edit__input-title">Pengarang</p>
+               <input type="text" maxlength="30" class="popup-edit__input" id="author">
+               <div class="popup-edit__warning-area">
+                  <p class="popup-edit__warning-text" id="author-warning"></p>
+               </div>
+            </label>
+            <label class="popup-edit__input-wrapper">
+               <p class="popup-edit__input-title">Penerbit</p>
+               <input type="text" maxlength="30" class="popup-edit__input" id="publisher">
+               <div class="popup-edit__warning-area">
+                  <p class="popup-edit__warning-text" id="publisher-warning"></p>
+               </div>
+            </label>
+            <label class="popup-edit__input-wrapper">
+               <p class="popup-edit__input-title">Bulan rilis</p>
+               <input type="date" class="popup-edit__input" max="2030-1-1" id="date">
+            </label>
+         </div>
+         <div class="popup-edit__button-wrapper">
+            <button class="popup-edit__cancel popup-edit__cancel--secondary" id="button-cancel">Batal</button>
+            <button class="popup-edit__save popup-edit__save--primary" id="button-save">Simpan</button>
+         </div>
+      </div>
+   </div>
+
+</body>
+
+</html>

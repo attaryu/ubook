@@ -1,0 +1,69 @@
+@use "../../abstract/mixins" as *;
+@use "./unread";
+
+.readed-container {
+	@extend .unread-container;
+
+	&__header {
+		@extend .unread-container__header;
+	}
+
+	&__heading {
+		@extend .unread-container__heading;
+	}
+
+	&__search-bar {
+		@extend .unread-container__search-bar;
+
+		&--accent {
+			@extend .unread-container__search-bar--accent;
+		}
+	}
+
+	&__search-icon {
+		@extend .unread-container__search-icon;
+	}
+
+	&__search-input {
+		@extend .unread-container__search-input;
+	}
+
+	&__bookshelf-container {
+		@extend .unread-container__bookshelf-container;
+	}
+
+	&__footer {
+		@extend .unread-container__footer;
+	}
+
+	&__note {
+		@extend .unread-container__note;
+	}
+}
+
+.card-bookshelf {
+	&__undo-button {
+		@extend .card-bookshelf__check-button;
+	}
+
+	&__undo-icon {
+		@extend .card-bookshelf__check-icon;
+	}
+
+	&__favorite-button {
+		@extend .card-bookshelf__check-button;
+	}
+
+	&__favorite-icon {
+		@extend .card-bookshelf__check-icon;
+		color: rgb(255, 39, 39);
+	}
+
+	&__delete-button {
+		@extend .card-bookshelf__check-button;
+	}
+
+	&__delete-icon {
+		@extend .card-bookshelf__check-icon;
+	}
+}

@@ -1,0 +1,269 @@
+@use "../../abstract/mixins" as *;
+@use "../../abstract/variable" as *;
+@use "../../reuse/button";
+
+.register-form {
+	@include gradient();
+	@include flexbox(center, center);
+
+	width: 100%;
+	height: 100vh;
+
+	@media screen and (min-width: 1366px) {
+		height: 110vh;
+	}
+}
+
+.register-form-box {
+	@include flexbox(space-between, center, column);
+
+	width: 85%;
+	background-color: white;
+	box-shadow: var(--box-shadow);
+	overflow: hidden;
+	border-radius: 6px;
+
+	@media screen and (min-width: 768px) {
+		height: 50vh;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	@media screen and (min-width: 1366px) {
+		width: 57%;
+		height: 70vh;
+		border-radius: 8px;
+	}
+
+	&__col-1 {
+		@include flexbox(space-between, center);
+
+		width: 100%;
+		height: 7.5vh;
+		padding: 15px 15px 15px;
+		background-color: var(--primary);
+		overflow: hidden;
+
+		@media screen and (min-width: 768px) {
+			height: 105%;
+			width: 40%;
+			padding: 30px 30px 0;
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 50%;
+		}
+
+		@media screen and (min-width: 1366px) {
+			padding: 25px 25px 0;
+		}
+	}
+
+	&__title {
+		@include heading-1(1.1rem);
+
+		width: 40%;
+		line-height: 0.9;
+		color: white;
+
+		@media screen and (min-width: 768px) {
+			font-size: 2.2rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 1.9rem;
+		}
+	}
+
+	&__container-image {
+		width: 35%;
+
+		@media screen and (min-width: 768px) {
+			width: 170%;
+			align-self: center;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 150%;
+		}
+	}
+
+	&__image {
+		width: 100%;
+	}
+
+	&__col-2 {
+		width: 100%;
+		padding: 35px 45px;
+
+		@media screen and (min-width: 768px) {
+			width: 60%;
+			padding: 45px 60px;
+
+			@include flexbox(center, center, column);
+		}
+
+		@media screen and (min-width: 1366px) {
+			padding-bottom: 0;
+			padding-inline: 75px;
+		}
+	}
+
+	&__input-wrapper {
+		width: 100%;
+		margin-bottom: 20px;
+		display: block;
+	}
+
+	&__input-title {
+		@include normal(0.7rem);
+
+		margin-bottom: 5px;
+		color: rgb(120, 120, 120);
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.9rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.8rem;
+			margin: 0;
+		}
+	}
+
+	&__input {
+		all: unset;
+		width: 100%;
+		padding: 1px 0;
+		border-bottom: 1px solid rgb(120, 120, 120);
+		cursor: text;
+
+		@include normal(0.8rem);
+		@include transition(300ms);
+
+		&--valid {
+			border-bottom: 1px solid rgb(1, 198, 93);
+		}
+	}
+
+	&__checkbox-area {
+		width: 90%;
+		margin-right: auto;
+		@include flexbox(space-between, center);
+
+		@media screen and (min-width: 768px) {
+			margin-right: 0;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 100%;
+		}
+	}
+
+	&__input-checkbox-wrapper {
+		@include flexbox(space-between, center);
+	}
+
+	&__input-checkbox-title {
+		margin-right: 15px;
+		color: rgb(100, 100, 100);
+		cursor: pointer;
+
+		@include normal(0.7rem);
+
+		&--disable {
+			color: rgb(180, 180, 180);
+			cursor: not-allowed;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.65rem;
+		}
+	}
+
+	&__checkbox-icon {
+		color: rgb(100, 100, 100);
+		transform: translateY(1.5px);
+		cursor: pointer;
+
+		&--checked {
+			color: var(--primary);
+		}
+
+		&--disable {
+			color: rgb(180, 180, 180);
+			cursor: not-allowed;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 1rem;
+		}
+	}
+
+	&__input-checkbox {
+		display: none;
+	}
+
+	&__warning-area {
+		height: 0.1vh;
+		margin-top: 5px;
+	}
+
+	&__warning-text {
+		color: rgb(255, 79, 79);
+
+		@include normal(0.6rem);
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.6rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.6rem;
+		}
+	}
+
+	&__button-wrapper {
+		margin-top: 5vh;
+
+		@include flexbox(space-between, center);
+
+		@media screen and (min-width: 768px) {
+			width: 90%;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 100%;
+			justify-content: flex-start;
+			align-items: center;
+		}
+	}
+
+	&__button {
+		@extend .button;
+		font-size: 1rem;
+
+		@media screen and (min-width: 768px) {
+			padding: 8px 23px;
+			font-size: 1.1rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.9rem;
+			margin-right: 30px;
+		}
+
+		&--primary {
+			@extend .button--primary;
+
+			&--disable {
+				background-color: lighten($primary, 30);
+			}
+		}
+		&--secondary {
+			@extend .button--secondary;
+		}
+	}
+}

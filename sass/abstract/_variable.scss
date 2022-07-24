@@ -1,0 +1,22 @@
+$primary: #553ebf;
+$secondary: #ded7ff;
+$text: #282828;
+$bg: #fafafa;
+
+$linear-color-1: #896eff;
+$linear-color-2: #5d45c5;
+
+$box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+	rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+:root {
+	--primary: #{$primary};
+	--secondary: #{$secondary};
+	--text: #{$text};
+	--bg: #{$bg};
+
+	--linear-color-1: #{$linear-color-1};
+	--linear-color-2: #{$linear-color-2};
+
+	--box-shadow: #{$box-shadow};
+}

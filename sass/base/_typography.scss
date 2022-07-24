@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;1,500;1,600&display=swap");
+
+body {
+	font-size: calc(16px + 0.390625vw);
+	font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+	body {
+		font-size: calc(18px + 0.390625vw);
+	}
+}
+@media screen and (min-width: 1024px) {
+	body {
+		font-size: calc(19px + 0.390625vw);
+	}
+}
+@media screen and (min-width: 1280px) {
+	body {
+		font-size: calc(20px + 0.390625vw);
+	}
+}
+@media screen and (min-width: 1536px) {
+	body {
+		font-size: calc(21px + 0.390625vw);
+	}
+}
+@media screen and (min-width: 1920px) {
+	body {
+		font-size: calc(23px + 0.390625vw);
+	}
+}

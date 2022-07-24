@@ -1,0 +1,118 @@
+@use "../abstract/mixins" as *;
+
+.footer {
+	width: 100%;
+	margin-top: 15vh;
+	background-color: rgb(30, 30, 30);
+
+	@media screen and (min-width: 768px) {
+		margin-top: 20vh;
+	}
+
+	@media screen and (min-width: 1366px) {
+		margin-top: 30vh;
+	}
+
+	&__wrap-1 {
+		padding: 30px;
+		@include flexbox(null, null, column);
+
+		@media screen and (min-width: 768px) {
+			flex-direction: row;
+			padding: 40px;
+		}
+
+		@media screen and (min-width: 1366px) {
+			padding: 50px;
+			justify-content: center;
+		}
+	}
+
+	&__banner {
+		width: 100%;
+		aspect-ratio: 16/7;
+		border-radius: 7px;
+
+		@include flexbox(center, center);
+		@include gradient(45deg);
+
+		@media screen and (min-width: 768px) {
+			width: 80%;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 50%;
+			aspect-ratio: 20/7;
+			border-radius: 10px;
+		}
+	}
+
+	&__logo {
+		width: 50%;
+	}
+
+	&__nav-link {
+		margin-top: 10px;
+
+		@media screen and (min-width: 768px) {
+			margin-top: 0;
+			margin-left: 20px;
+		}
+	}
+
+	&__link-list {
+		width: 100%;
+		@include flexbox(space-between, center);
+
+		@media screen and (min-width: 768px) {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+
+	&__list-item {
+		@media screen and (min-width: 768px) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__link {
+		color: white;
+		text-decoration: none;
+
+		@include normal(0.7rem);
+
+		&--disable {
+			color: #b3b3b3;
+		}
+
+		@media screen and (min-width: 768px) {
+			font-size: 1rem;
+		}
+	}
+
+	&__wrap-2 {
+		width: 100%;
+		margin-top: 20px;
+		padding: 10px 30px;
+		background-color: rgb(15, 15, 15);
+
+		@media screen and (min-width: 768px) {
+			padding: 20px 50px;
+		}
+
+		@media screen and (min-width: 1366px) {
+			padding: 15px;
+		}
+	}
+
+	&__ending-text {
+		color: rgb(200, 200, 200);
+		text-align: center;
+		@include normal(0.7rem);
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.7rem;
+		}
+	}
+}

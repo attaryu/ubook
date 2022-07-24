@@ -1,0 +1,17 @@
+@use "../abstract/mixins" as *;
+
+.burger-button {
+	all: unset;
+	width: 30px;
+	height: 25px;
+
+	@include flexbox(space-between, null, column);
+
+	&__stripe {
+		@include transition(400ms);
+
+		height: 0.7vh;
+		display: block;
+		background-color: white;
+	}
+}

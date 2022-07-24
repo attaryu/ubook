@@ -1,0 +1,23 @@
+@use "../abstract/variable" as *;
+@use "../abstract/mixins" as *;
+
+.button {
+	all: unset;
+	padding: 7px 20px;
+	border-radius: 100px;
+
+	@include normal(0.9rem);
+
+	font-weight: 600;
+
+	&--primary {
+		background-color: var(--primary);
+		color: white;
+	}
+
+	&--secondary {
+		// border: 2px solid var(--primary);
+		background-color: darken($secondary, 5);
+		color: lighten($primary, 10);
+	}
+}

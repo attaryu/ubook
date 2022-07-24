@@ -1,0 +1,90 @@
+@use "../abstract/mixins" as *;
+@use "./container/register-form";
+
+.popup-bg {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	display: none;
+	place-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(2px);
+	z-index: 10;
+
+	&--active {
+		display: grid;
+	}
+}
+
+.popup-edit {
+	width: 80%;
+	background-color: white;
+	border-radius: 6px;
+	overflow: hidden;
+
+	@media screen and (min-width: 1366px) {
+		width: 50%;
+	}
+
+	&__wrapper-form {
+		padding: 30px 30px 30px;
+
+		@media screen and (min-width: 1366px) {
+			padding: 50px;
+		}
+	}
+
+	&__input-wrapper {
+		@extend .register-form-box__input-wrapper;
+	}
+	&__input-title {
+		@extend .register-form-box__input-title;
+	}
+	&__input {
+		@extend .register-form-box__input;
+	}
+	&__warning-area {
+		@extend .register-form-box__warning-area;
+	}
+	&__warning-text {
+		@extend .register-form-box__warning-text;
+	}
+
+	&__button-wrapper {
+		width: 100%;
+		padding: 15px 50px;
+		@include flexbox(flex-end, center);
+		background-color: var(--secondary);
+	}
+
+	&__cancel {
+		@extend .register-form-box__button;
+		padding: 7px 20px;
+		cursor: pointer;
+
+		@include normal(0.8rem);
+
+		&--secondary {
+			border: 1.5px solid var(--primary);
+			color: var(--primary);
+		}
+	}
+
+	&__save {
+		@extend .register-form-box__button;
+		margin-left: 20px;
+		padding: 7px 20px;
+		cursor: pointer;
+
+		@include normal(0.8rem);
+
+		&--primary {
+			@extend .register-form-box__button--primary;
+		}
+
+		@media screen and (min-width: 1366px) {
+			margin: 0;
+		}
+	}
+}

@@ -1,0 +1,313 @@
+@use "../../abstract/mixins" as *;
+@use "../../reuse/button";
+
+.unread-container {
+	width: 100%;
+	margin-top: 40px;
+
+	@media screen and (min-width: 1366px) {
+		margin-top: 50px;
+	}
+
+	&__header {
+		width: 100%;
+		padding: 15px 15px 15px;
+
+		@include flexbox(space-between, center);
+
+		@media screen and (min-width: 1366px) {
+			padding: 20px 30px;
+		}
+	}
+
+	&__heading {
+		color: var(--text);
+
+		@include heading-1(1.3rem);
+
+		@media screen and (min-width: 768px) {
+			font-size: 2rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 2.1rem;
+		}
+	}
+
+	&__search-bar {
+		all: unset;
+		width: 30%;
+		padding: 5px 15px;
+		@include flexbox(null, center);
+		border-radius: 100px;
+
+		@include heading-2(0.8rem);
+
+		&--accent {
+			border: 1.5px solid var(--primary);
+			color: var(--primary);
+		}
+
+		@media screen and (min-width: 768px) {
+			padding: 8px 20px;
+			font-size: 1rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 20%;
+		}
+	}
+
+	&__search-icon {
+		padding-right: 10px;
+	}
+
+	&__search-input {
+		all: unset;
+		width: 100%;
+
+		@include normal(0.7rem);
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.9rem;
+		}
+	}
+
+	&__bookshelf-container {
+		width: 100%;
+		max-height: 70vh;
+		padding: 20px 25px;
+		background-color: var(--secondary);
+		overflow-y: auto;
+
+		@include flexbox(null, null, column);
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@media screen and (min-width: 768px) {
+			padding: 30px 50px;
+		}
+
+		@media screen and (min-width: 1366px) {
+			padding: 40px 50px;
+		}
+	}
+
+	&__footer {
+		width: 100%;
+		padding: 15px;
+
+		@media screen and (min-width: 1366px) {
+			padding: 20px 30px 100px;
+		}
+	}
+
+	&__note {
+		@include normal(0.65rem);
+		color: rgb(120, 120, 120);
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.9rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 0.8rem;
+		}
+	}
+}
+
+.card-bookshelf {
+	margin-bottom: 30px;
+	padding: 10px 15px;
+	background-color: #fff;
+	border-radius: 6px;
+	box-shadow: var(--box-shadow);
+
+	@include flexbox(null, null, column);
+
+	@media screen and (min-width: 768px) {
+		padding: 20px 25px;
+	}
+
+	@media screen and (min-width: 1366px) {
+		padding: 25px 35px;
+		flex-direction: row;
+	}
+
+	&__wrap-1 {
+		width: 100%;
+
+		@media screen and (min-width: 1366px) {
+			display: grid;
+			grid-template-areas:
+				"heading heading heading"
+				"author publisher realese-date";
+		}
+	}
+
+	&__heading {
+		grid-area: heading;
+		width: 90%;
+		white-space: nowrap;
+		position: relative;
+		line-height: 25px;
+		overflow: hidden;
+
+		@include heading-2(1rem);
+
+		&::after {
+			content: "";
+			width: 20%;
+			height: 25px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			z-index: 1;
+			background-image: linear-gradient(90deg, transparent, #ffffff);
+		}
+
+		@media screen and (min-width: 768px) {
+			font-size: 1.5rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			font-size: 1.4rem;
+			margin-bottom: 10px;
+		}
+	}
+
+	&__author {
+		width: 100%;
+		margin-top: 10px;
+		color: rgb(150, 150, 150);
+		line-height: 25px;
+		position: relative;
+		white-space: nowrap;
+		@include normal(0.7rem);
+
+		&::after {
+			content: "";
+			width: 20%;
+			height: 25px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			z-index: 1;
+			background-image: linear-gradient(90deg, transparent, #ffffff);
+		}
+
+		@media screen and (min-width: 768px) {
+			font-size: 1.1rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			margin: 0;
+		}
+	}
+
+	&__publisher {
+		margin-top: 5px;
+		width: 90%;
+		color: rgb(150, 150, 150);
+		white-space: nowrap;
+		position: relative;
+		line-height: 25px;
+		@include normal(0.7rem);
+
+		&::after {
+			content: "";
+			width: 20%;
+			height: 25px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			z-index: 1;
+			background-image: linear-gradient(90deg, transparent, #ffffff);
+		}
+
+		@media screen and (min-width: 768px) {
+			font-size: 1.1rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			width: 100%;
+			margin: 0;
+		}
+	}
+
+	&__realese-date {
+		margin-top: 10px;
+		color: rgb(150, 150, 150);
+		line-height: 25px;
+		position: relative;
+		white-space: nowrap;
+		@include normal(0.6rem);
+
+		&::after {
+			content: "";
+			width: 20%;
+			height: 25px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			z-index: 1;
+			background-image: linear-gradient(90deg, transparent, #ffffff);
+		}
+
+		@media screen and (min-width: 768px) {
+			font-size: 0.9rem;
+		}
+
+		@media screen and (min-width: 1366px) {
+			margin: 0;
+		}
+	}
+
+	&__wrap-2 {
+		width: 100%;
+		margin-top: 30px;
+
+		@include flexbox(end, center);
+
+		@media screen and (min-width: 1366px) {
+			margin-top: 0;
+		}
+	}
+
+	&__check-button {
+		all: unset;
+		width: 28px;
+		height: 28px;
+		margin-left: 20px;
+		cursor: pointer;
+
+		@media screen and (min-width: 768px) {
+			height: 35px;
+			width: 35px;
+			margin-left: 35px;
+		}
+	}
+
+	&__check-icon {
+		font-size: 28px;
+		color: var(--primary);
+
+		@media screen and (min-width: 768px) {
+			font-size: 35px;
+		}
+	}
+
+	&__edit-button {
+		@extend .card-bookshelf__check-button;
+	}
+
+	&__edit-icon {
+		@extend .card-bookshelf__check-icon;
+	}
+}
