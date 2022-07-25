@@ -186,6 +186,7 @@
 		line-height: 25px;
 		position: relative;
 		white-space: nowrap;
+		overflow: hidden;
 		@include normal(0.7rem);
 
 		&::after {
@@ -216,6 +217,7 @@
 		white-space: nowrap;
 		position: relative;
 		line-height: 25px;
+		overflow: hidden;
 		@include normal(0.7rem);
 
 		&::after {

@@ -90,7 +90,7 @@
 
 		&::after {
 			content: "";
-			width: 10%;
+			width: 5%;
 			height: 255px;
 			position: absolute;
 			right: 0;
@@ -130,6 +130,7 @@
 
 .card {
 	min-width: 250px;
+	max-width: 250px;
 	margin-right: 50px;
 	padding: 20px;
 	box-shadow: var(--box-shadow);
@@ -139,6 +140,7 @@
 
 	@media screen and (min-width: 768px) {
 		min-width: 300px;
+		max-width: 300px;
 		padding: 25px;
 		border-radius: 10px;
 		@include flexbox(null, null, column);

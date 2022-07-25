@@ -31,8 +31,8 @@ const inputUserTitle = document.querySelectorAll("#title");
 inputUserTitle[0].addEventListener("input", () => {
    const warning = document.querySelector("#title-warning");
 
-   if (inputUserTitle[0].value.length === 40) {
-      warning.innerText = "Maks 40 karakter";
+   if (inputUserTitle[0].value.length === 100) {
+      warning.innerText = "Maks 100 karakter";
    } else {
       warning.innerText = "";
    }
@@ -43,8 +43,8 @@ const inputUserAuthor = document.querySelectorAll("#author");
 inputUserAuthor[0].addEventListener("input", () => {
    const warning = document.querySelector("#author-warning");
 
-   if (inputUserAuthor[0].value.length === 30) {
-      warning.innerText = "Maks 30 karakter";
+   if (inputUserAuthor[0].value.length === 60) {
+      warning.innerText = "Maks 60 karakter";
    } else {
       warning.innerText = "";
    }
@@ -55,8 +55,8 @@ const inputUserPublisher = document.querySelectorAll("#publisher");
 inputUserPublisher[0].addEventListener("input", () => {
    const warning = document.querySelector("#publisher-warning");
 
-   if (inputUserPublisher[0].value.length === 30) {
-      warning.innerText = "Maks 30 karakter";
+   if (inputUserPublisher[0].value.length === 60) {
+      warning.innerText = "Maks 60 karakter";
    } else {
       warning.innerText = "";
    }

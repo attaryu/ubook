@@ -1,7 +1,6 @@
 const dataKey = "DATA_KEY";
 let data = { favorite: [], unread: [], readed: [] };
 
-
 class DataBook {
    constructor(id, title, author, publisher, realeseDate, readed, favorite) {
       this.id = id;
@@ -52,7 +51,10 @@ document.addEventListener("click", (e) => {
 
    else if (event.classList.contains("button-unfavorite")) {
       const id = event.getAttribute("id");
-      data.readed.push(...data.favorite.splice(getIndex(id), 1));
+      const newData = data.favorite.splice(getIndex(id), 1);
+      newData[0].favorite = false;
+      console.log(newData[0]);
+      data.readed.push(newData[0]);
 
       stored();
    }
@@ -62,7 +64,10 @@ document.addEventListener("click", (e) => {
          alert("maaf, rak buku favorit maksimal 10 item");
       } else {
          const id = event.getAttribute("id");
-         data.favorite.push(...data.readed.splice(getIndex(id), 1));
+         const newData = data.readed.splice(getIndex(id), 1);
+         newData[0].favorite = true;
+         console.log(newData[0]);
+         data.favorite.push(newData[0]);
 
          stored();
       }
@@ -70,21 +75,33 @@ document.addEventListener("click", (e) => {
 
    else if (event.classList.contains("button-check")) {
       const id = event.getAttribute("id");
-      data.readed.push(...data.unread.splice(getIndex(id), 1));
+      const newData = data.unread.splice(getIndex(id), 1);
+      newData[0].readed = true;
+      console.log(newData[0]);
+      data.readed.push(newData[0]);
 
       stored();
    }
 
    else if (event.classList.contains("button-undo")) {
       const id = event.getAttribute("id");
-      data.unread.push(...data.readed.splice(getIndex(id), 1));
+      const newData = data.readed.splice(getIndex(id), 1);
+      newData[0].readed = false;
+      console.log(newData[0]);
+      data.unread.push(newData[0]);
 
       stored();
    }
 
    else if (event.classList.contains("button-delete")) {
       const id = event.getAttribute("id");
-      data.readed.splice(getIndex(id), 1);
+      for (const section in data) {
+         for (const miniData of data[section]) {
+            if (miniData.id == id) {
+               data[section].splice(data[section].indexOf(miniData), 1);
+            }
+         }
+      }
 
       stored();
    }
@@ -138,6 +155,9 @@ buttonSubmit.addEventListener("click", (event) => {
       inputUserRealeseDate[0].value = "";
       inputReaded.checked = false;
       inputFavorite.checked = false;
+
+      document.querySelectorAll(".register-form-box__input")
+         .forEach((item) => item.classList.remove("register-form-box__input--valid"));
    }
 
    localStorage.setItem(dataKey, JSON.stringify(data));
@@ -218,7 +238,6 @@ function getDataById(idNum) {
 
 
 function getDataByTitle(title, r) {
-   console.log(title);
    const result = []
    for (const miniData of data[r]) {
       const newTitle = miniData.title.toUpperCase();
@@ -283,11 +302,14 @@ function refleshUnread() {
                   <p class="card-bookshelf__realese-date">${unread.realeseDate}</p>
                   </div>
                <div class="card-bookshelf__wrap-2">
+               <button class="card-bookshelf__undo-button">
+               <i class="fa-regular fa-trash-can card-bookshelf__undo-icon button-delete" id="${unread.id}"></i>
+               </button>
                   <button class="card-bookshelf__edit-button">
                      <i class="fa-regular fa-pen-to-square card-bookshelf__edit-icon button-edit" id="${unread.id}"></i>
                   </button>
                   <button class="card-bookshelf__check-button">
-                  <i class="fa-solid fa-check-circle card-bookshelf__check-icon button-check" id="${unread.id}"></i>
+                  <i class="fa-regular fa-check-circle card-bookshelf__check-icon button-check" id="${unread.id}"></i>
                   </button>
                </div>
             </li>`
@@ -312,13 +334,13 @@ function refleshReaded() {
                </div>
                <div class="card-bookshelf__wrap-2">
                <button class="card-bookshelf__undo-button">
-               <i class="fa-solid fa-undo-alt card-bookshelf__undo-icon button-undo" id="${readed.id}"></i>
+               <i class="fa-solid fa-arrow-rotate-left card-bookshelf__undo-icon button-undo" id="${readed.id}"></i>
                </button>
                <button class="card-bookshelf__favorite-button">
                      <i class="fa-regular fa-heart card-bookshelf__favorite-icon button-favorite" id="${readed.id}"></i>
                   </button>
                   <button class="card-bookshelf__delete-button">
-                  <i class="fa-regular fa-circle-xmark card-bookshelf__delete-icon button-delete" id="${readed.id}"></i>
+                  <i class="fa-regular fa-trash-can card-bookshelf__delete-icon button-delete" id="${readed.id}"></i>
                   </button>
                </div>
             </li>`
@@ -341,6 +363,9 @@ function searchCardReflesh(datas, where) {
                   <p class="card-bookshelf__realese-date">${unread.realeseDate}</p>
                   </div>
                <div class="card-bookshelf__wrap-2">
+               <button class="card-bookshelf__undo-button">
+               <i class="fa-regular fa-trash-can card-bookshelf__undo-icon button-delete" id="${unread.id}"></i>
+               </button>
                   <button class="card-bookshelf__edit-button">
                      <i class="fa-regular fa-pen-to-square card-bookshelf__edit-icon button-edit" id="${unread.id}"></i>
                   </button>
@@ -362,13 +387,13 @@ function searchCardReflesh(datas, where) {
                </div>
                <div class="card-bookshelf__wrap-2">
                <button class="card-bookshelf__undo-button">
-               <i class="fa-solid fa-undo-alt card-bookshelf__undo-icon button-undo" id="${readed.id}"></i>
+               <i class="fa-solid fa-arrow-rotate-left card-bookshelf__undo-icon button-undo" id="${readed.id}"></i>
                </button>
                <button class="card-bookshelf__favorite-button">
                      <i class="fa-regular fa-heart card-bookshelf__favorite-icon button-favorite" id="${readed.id}"></i>
                   </button>
                   <button class="card-bookshelf__delete-button">
-                  <i class="fa-regular fa-circle-xmark card-bookshelf__delete-icon button-delete" id="${readed.id}"></i>
+                  <i class="fa-regular fa-trash-can card-bookshelf__delete-icon button-delete" id="${readed.id}"></i>
                   </button>
                </div>
             </li>`

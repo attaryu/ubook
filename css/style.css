@@ -622,7 +622,7 @@ body {
 }
 .favorite-container__card-container::after {
   content: "";
-  width: 10%;
+  width: 5%;
   height: 255px;
   position: absolute;
   right: 0;
@@ -664,6 +664,7 @@ body {
 
 .card {
   min-width: 250px;
+  max-width: 250px;
   margin-right: 50px;
   padding: 20px;
   box-shadow: var(--box-shadow);
@@ -673,6 +674,7 @@ body {
 @media screen and (min-width: 768px) {
   .card {
     min-width: 300px;
+    max-width: 300px;
     padding: 25px;
     border-radius: 10px;
     display: flex;
@@ -993,6 +995,7 @@ body {
   line-height: 25px;
   position: relative;
   white-space: nowrap;
+  overflow: hidden;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 0.7rem;
@@ -1025,6 +1028,7 @@ body {
   white-space: nowrap;
   position: relative;
   line-height: 25px;
+  overflow: hidden;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 0.7rem;
