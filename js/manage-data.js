@@ -53,7 +53,6 @@ document.addEventListener("click", (e) => {
       const id = event.getAttribute("id");
       const newData = data.favorite.splice(getIndex(id), 1);
       newData[0].favorite = false;
-      console.log(newData[0]);
       data.readed.push(newData[0]);
 
       stored();
@@ -66,7 +65,6 @@ document.addEventListener("click", (e) => {
          const id = event.getAttribute("id");
          const newData = data.readed.splice(getIndex(id), 1);
          newData[0].favorite = true;
-         console.log(newData[0]);
          data.favorite.push(newData[0]);
 
          stored();
@@ -77,7 +75,6 @@ document.addEventListener("click", (e) => {
       const id = event.getAttribute("id");
       const newData = data.unread.splice(getIndex(id), 1);
       newData[0].readed = true;
-      console.log(newData[0]);
       data.readed.push(newData[0]);
 
       stored();
@@ -87,7 +84,6 @@ document.addEventListener("click", (e) => {
       const id = event.getAttribute("id");
       const newData = data.readed.splice(getIndex(id), 1);
       newData[0].readed = false;
-      console.log(newData[0]);
       data.unread.push(newData[0]);
 
       stored();
